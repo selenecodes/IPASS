@@ -34,7 +34,7 @@ class Actor():
                 Number of frames per state.
             trainingMode: : boolean
                 Whether this Actor is used for training or predicting.
-            hwId : string, 
+            hwDevice : string, 
                 CPU or CUDA (whether to offload to GPU or use the CPU).
         """
         
@@ -101,12 +101,21 @@ class Actor():
 
     def chooseAction(self, state):
         """
-            Choose an action
+            Choose an action to perform on the track
+
+            Parameters
+            -------
+            state:
+                The current state of the car.
 
             Returns
             -------
             action : np.ndarray
                 An action for the network to run on the track
+
+            Notes
+            -------
+                This function is only called when the --train flag is NOT provided.
         """
         state = torch.from_numpy(state).double().to(self.hardwareDevice).unsqueeze(0)
         with torch.no_grad():
@@ -118,12 +127,21 @@ class Actor():
     def chooseActionTrain(self, state):
         """ Choose an action during training mode
         
+            Parameters
+            -------
+            state:
+                The current state of the car.
+
             Returns
             -------
             action : np.ndarray
                 The actions to run on the track
             coefficient : float
                 The logarithmic probability for an action
+
+            Notes
+            -------
+                This function is only called when the --train flag IS provided.
         """
         state = torch.from_numpy(state).double().to(self.hardwareDevice).unsqueeze(0)
         with torch.no_grad():
@@ -144,6 +162,11 @@ class Actor():
             -------
             transition : dtype=self.transition 
                 A transition element which is saved to the internal memory buffer
+
+            Returns
+            -------
+            Boolean
+                A boolean representing whether the buffer was SUCCESFULLY stored and didn't overflow.
         """
         self.buffer[self.counter] = transition
         self.counter += 1

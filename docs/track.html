@@ -68,6 +68,11 @@ class Track():
             -------
                 np.array
                     Array with the current framestack, score, finished status and crashed status.
+
+            Raises
+            -------
+                AssertionError
+                    Raised when stacksize is not equal to the length of self.stack
         &#34;&#34;&#34;
 
         score = 0
@@ -134,7 +139,7 @@ class Track():
 
     @staticmethod
     def rgbAsGrayscale(rgb, colorNormalization=True):
-        &#34;&#34;&#34; Calculates the mean reward for keeping previous runs in memory
+        &#34;&#34;&#34; Converts an rgb frame to a greyscale frame
             
             Parameters
             -------
@@ -225,6 +230,11 @@ class Track():
             -------
                 np.array
                     Array with the current framestack, score, finished status and crashed status.
+
+            Raises
+            -------
+                AssertionError
+                    Raised when stacksize is not equal to the length of self.stack
         &#34;&#34;&#34;
 
         score = 0
@@ -291,7 +301,7 @@ class Track():
 
     @staticmethod
     def rgbAsGrayscale(rgb, colorNormalization=True):
-        &#34;&#34;&#34; Calculates the mean reward for keeping previous runs in memory
+        &#34;&#34;&#34; Converts an rgb frame to a greyscale frame
             
             Parameters
             -------
@@ -363,7 +373,7 @@ def memoryReward():
 <span>def <span class="ident">rgbAsGrayscale</span></span>(<span>rgb, colorNormalization=True)</span>
 </code></dt>
 <dd>
-<section class="desc"><p>Calculates the mean reward for keeping previous runs in memory</p>
+<section class="desc"><p>Converts an rgb frame to a greyscale frame</p>
 <h2 id="parameters">Parameters</h2>
 <dl>
 <dt><strong><code>rgb</code></strong> :&ensp;<code>np.ndarray</code></dt>
@@ -380,7 +390,7 @@ def memoryReward():
 <summary>Source code</summary>
 <pre><code class="python">@staticmethod
 def rgbAsGrayscale(rgb, colorNormalization=True):
-    &#34;&#34;&#34; Calculates the mean reward for keeping previous runs in memory
+    &#34;&#34;&#34; Converts an rgb frame to a greyscale frame
         
         Parameters
         -------
@@ -447,6 +457,10 @@ def rgbAsGrayscale(rgb, colorNormalization=True):
 <h2 id="returns">Returns</h2>
 <pre><code>np.array
     Array with the current framestack, score, finished status and crashed status.
+</code></pre>
+<h2 id="raises">Raises</h2>
+<pre><code>AssertionError
+    Raised when stacksize is not equal to the length of self.stack
 </code></pre></section>
 <details class="source">
 <summary>Source code</summary>
@@ -462,6 +476,11 @@ def rgbAsGrayscale(rgb, colorNormalization=True):
         -------
             np.array
                 Array with the current framestack, score, finished status and crashed status.
+
+        Raises
+        -------
+            AssertionError
+                Raised when stacksize is not equal to the length of self.stack
     &#34;&#34;&#34;
 
     score = 0

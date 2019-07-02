@@ -44,6 +44,11 @@ class Track():
             -------
                 np.array
                     Array with the current framestack, score, finished status and crashed status.
+
+            Raises
+            -------
+                AssertionError
+                    Raised when stacksize is not equal to the length of self.stack
         """
 
         score = 0
@@ -110,7 +115,7 @@ class Track():
 
     @staticmethod
     def rgbAsGrayscale(rgb, colorNormalization=True):
-        """ Calculates the mean reward for keeping previous runs in memory
+        """ Converts an rgb frame to a greyscale frame
             
             Parameters
             -------

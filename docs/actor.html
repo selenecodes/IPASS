@@ -58,7 +58,7 @@ class Actor():
                 Number of frames per state.
             trainingMode: : boolean
                 Whether this Actor is used for training or predicting.
-            hwId : string, 
+            hwDevice : string, 
                 CPU or CUDA (whether to offload to GPU or use the CPU).
         &#34;&#34;&#34;
         
@@ -125,12 +125,21 @@ class Actor():
 
     def chooseAction(self, state):
         &#34;&#34;&#34;
-            Choose an action
+            Choose an action to perform on the track
+
+            Parameters
+            -------
+            state:
+                The current state of the car.
 
             Returns
             -------
             action : np.ndarray
                 An action for the network to run on the track
+
+            Notes
+            -------
+                This function is only called when the --train flag is NOT provided.
         &#34;&#34;&#34;
         state = torch.from_numpy(state).double().to(self.hardwareDevice).unsqueeze(0)
         with torch.no_grad():
@@ -142,12 +151,21 @@ class Actor():
     def chooseActionTrain(self, state):
         &#34;&#34;&#34; Choose an action during training mode
         
+            Parameters
+            -------
+            state:
+                The current state of the car.
+
             Returns
             -------
             action : np.ndarray
                 The actions to run on the track
             coefficient : float
                 The logarithmic probability for an action
+
+            Notes
+            -------
+                This function is only called when the --train flag IS provided.
         &#34;&#34;&#34;
         state = torch.from_numpy(state).double().to(self.hardwareDevice).unsqueeze(0)
         with torch.no_grad():
@@ -168,6 +186,11 @@ class Actor():
             -------
             transition : dtype=self.transition 
                 A transition element which is saved to the internal memory buffer
+
+            Returns
+            -------
+            Boolean
+                A boolean representing whether the buffer was SUCCESFULLY stored and didn&#39;t overflow.
         &#34;&#34;&#34;
         self.buffer[self.counter] = transition
         self.counter += 1
@@ -245,7 +268,7 @@ class Actor():
 <dd>Number of frames per state.</dd>
 <dt><strong><code>trainingMode</code></strong> :&ensp;: <code>boolean</code></dt>
 <dd>Whether this Actor is used for training or predicting.</dd>
-<dt><strong><code>hwId</code></strong> :&ensp;<code>string</code>,</dt>
+<dt><strong><code>hwDevice</code></strong> :&ensp;<code>string</code>,</dt>
 <dd>CPU or CUDA (whether to offload to GPU or use the CPU).</dd>
 </dl></section>
 <details class="source">
@@ -275,7 +298,7 @@ class Actor():
                 Number of frames per state.
             trainingMode: : boolean
                 Whether this Actor is used for training or predicting.
-            hwId : string, 
+            hwDevice : string, 
                 CPU or CUDA (whether to offload to GPU or use the CPU).
         &#34;&#34;&#34;
         
@@ -342,12 +365,21 @@ class Actor():
 
     def chooseAction(self, state):
         &#34;&#34;&#34;
-            Choose an action
+            Choose an action to perform on the track
+
+            Parameters
+            -------
+            state:
+                The current state of the car.
 
             Returns
             -------
             action : np.ndarray
                 An action for the network to run on the track
+
+            Notes
+            -------
+                This function is only called when the --train flag is NOT provided.
         &#34;&#34;&#34;
         state = torch.from_numpy(state).double().to(self.hardwareDevice).unsqueeze(0)
         with torch.no_grad():
@@ -359,12 +391,21 @@ class Actor():
     def chooseActionTrain(self, state):
         &#34;&#34;&#34; Choose an action during training mode
         
+            Parameters
+            -------
+            state:
+                The current state of the car.
+
             Returns
             -------
             action : np.ndarray
                 The actions to run on the track
             coefficient : float
                 The logarithmic probability for an action
+
+            Notes
+            -------
+                This function is only called when the --train flag IS provided.
         &#34;&#34;&#34;
         state = torch.from_numpy(state).double().to(self.hardwareDevice).unsqueeze(0)
         with torch.no_grad():
@@ -385,6 +426,11 @@ class Actor():
             -------
             transition : dtype=self.transition 
                 A transition element which is saved to the internal memory buffer
+
+            Returns
+            -------
+            Boolean
+                A boolean representing whether the buffer was SUCCESFULLY stored and didn&#39;t overflow.
         &#34;&#34;&#34;
         self.buffer[self.counter] = transition
         self.counter += 1
@@ -462,22 +508,37 @@ class Actor():
 <span>def <span class="ident">chooseAction</span></span>(<span>self, state)</span>
 </code></dt>
 <dd>
-<section class="desc"><p>Choose an action</p>
+<section class="desc"><p>Choose an action to perform on the track</p>
+<h2 id="parameters">Parameters</h2>
+<p>state:
+The current state of the car.</p>
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><strong><code>action</code></strong> :&ensp;<code>np.ndarray</code></dt>
 <dd>An action for the network to run on the track</dd>
-</dl></section>
+</dl>
+<h2 id="notes">Notes</h2>
+<pre><code>This function is only called when the --train flag is NOT provided.
+</code></pre></section>
 <details class="source">
 <summary>Source code</summary>
 <pre><code class="python">def chooseAction(self, state):
     &#34;&#34;&#34;
-        Choose an action
+        Choose an action to perform on the track
+
+        Parameters
+        -------
+        state:
+            The current state of the car.
 
         Returns
         -------
         action : np.ndarray
             An action for the network to run on the track
+
+        Notes
+        -------
+            This function is only called when the --train flag is NOT provided.
     &#34;&#34;&#34;
     state = torch.from_numpy(state).double().to(self.hardwareDevice).unsqueeze(0)
     with torch.no_grad():
@@ -492,24 +553,39 @@ class Actor():
 </code></dt>
 <dd>
 <section class="desc"><p>Choose an action during training mode</p>
+<h2 id="parameters">Parameters</h2>
+<p>state:
+The current state of the car.</p>
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><strong><code>action</code></strong> :&ensp;<code>np.ndarray</code></dt>
 <dd>The actions to run on the track</dd>
 <dt><strong><code>coefficient</code></strong> :&ensp;<code>float</code></dt>
 <dd>The logarithmic probability for an action</dd>
-</dl></section>
+</dl>
+<h2 id="notes">Notes</h2>
+<pre><code>This function is only called when the --train flag IS provided.
+</code></pre></section>
 <details class="source">
 <summary>Source code</summary>
 <pre><code class="python">def chooseActionTrain(self, state):
     &#34;&#34;&#34; Choose an action during training mode
     
+        Parameters
+        -------
+        state:
+            The current state of the car.
+
         Returns
         -------
         action : np.ndarray
             The actions to run on the track
         coefficient : float
             The logarithmic probability for an action
+
+        Notes
+        -------
+            This function is only called when the --train flag IS provided.
     &#34;&#34;&#34;
     state = torch.from_numpy(state).double().to(self.hardwareDevice).unsqueeze(0)
     with torch.no_grad():
@@ -605,6 +681,11 @@ class Actor():
 <dl>
 <dt><strong><code>transition</code></strong> :&ensp;<code>dtype</code>=<code>self.transition</code></dt>
 <dd>A transition element which is saved to the internal memory buffer</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Boolean</code></dt>
+<dd>A boolean representing whether the buffer was SUCCESFULLY stored and didn't overflow.</dd>
 </dl></section>
 <details class="source">
 <summary>Source code</summary>
@@ -615,6 +696,11 @@ class Actor():
         -------
         transition : dtype=self.transition 
             A transition element which is saved to the internal memory buffer
+
+        Returns
+        -------
+        Boolean
+            A boolean representing whether the buffer was SUCCESFULLY stored and didn&#39;t overflow.
     &#34;&#34;&#34;
     self.buffer[self.counter] = transition
     self.counter += 1
