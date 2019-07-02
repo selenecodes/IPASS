@@ -18,7 +18,7 @@ class Actor():
     epoch = 10
 
 
-    def __init__(self, outputModel, inputModel, discount, framesPerState = 8, trainingMode = False, hwDevice = 'CPU'): 
+    def __init__(self, outputModel, inputModel, discount = 0.99, framesPerState = 8, trainingMode = False, hwDevice = 'cpu'): 
         """ The actor constructor
         
 
