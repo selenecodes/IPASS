@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.6.2" />
+<title>run API documentation</title>
+<meta name="description" content="This documents uses Google Style docstrings.
+The Flags name has been manually added for better clarity with launch flags …" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase;cursor:pointer}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>run</code></h1>
+</header>
+<section id="section-intro">
+<p>This documents uses Google Style docstrings.
+The Flags name has been manually added for better clarity with launch flags.</p>
+<h2 id="example">Example</h2>
+<p>For training one can run the following commands.</p>
+<pre><code>$ python run.py --train --output-model=./mymodel
+$ python run.py --train --output-model=./mymodel --input-model=./models/mypreviousmodel.pkl
+</code></pre>
+<p>For predicting one can run the following command</p>
+<pre><code>$ python run.py --input-model=./models/mymodel.pkl
+</code></pre>
+<h2 id="parameters">Parameters</h2>
+<p>&ndash;action-repeat : int, 16
+Allowed repeated actions in N frames</p>
+<p>&ndash;frames-per-state : int
+Number of frames per state</p>
+<p>&ndash;log-timing : int
+The interval to run logs on when &ndash;train is enabled</p>
+<p>&ndash;output-model : string
+The path to save the current training data to.</p>
+<pre><code>Note
+-------
+    - Requires the --train flag
+    - The path WITHOUT the file extension
+</code></pre>
+<p>&ndash;input-model : string
+The path to load a pretrained model from.</p>
+<pre><code>Note
+-------
+    - The path WITH the file extension
+</code></pre>
+<p>&ndash;nn-seed : int
+An integer to seed pytorch with.</p>
+<p>&ndash;level-seed : int
+An integer to seed the level with.</p>
+<p>&ndash;discount : float
+The discount factor for the neural network</p>
+<p>&ndash;runs : int
+The amount of training runs</p>
+<pre><code>Note
+-------
+    - Only works when --train flag is provided
+</code></pre>
+<p>&ndash;train : boolean
+Enable training if this flag is provided</p>
+<pre><code>Note
+-------
+    - Requires the --output-model flag
+</code></pre>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">&#34;&#34;&#34;
+    This documents uses Google Style docstrings.
+    The Flags name has been manually added for better clarity with launch flags.
+
+
+    Example
+    -------
+    For training one can run the following commands.
+
+        $ python run.py --train --output-model=./mymodel
+        $ python run.py --train --output-model=./mymodel --input-model=./models/mypreviousmodel.pkl
+
+    For predicting one can run the following command
+
+        $ python run.py --input-model=./models/mymodel.pkl
+
+
+
+    Parameters
+    -------
+    --action-repeat : int, 16
+        Allowed repeated actions in N frames
+
+    --frames-per-state : int
+        Number of frames per state
+
+    --log-timing : int
+        The interval to run logs on when --train is enabled
+
+    --output-model : string
+        The path to save the current training data to.
+
+        Note
+        -------
+            - Requires the --train flag
+            - The path WITHOUT the file extension
+    
+    --input-model : string
+        The path to load a pretrained model from.
+
+        Note
+        -------
+            - The path WITH the file extension
+    
+    --nn-seed : int
+        An integer to seed pytorch with.
+
+    --level-seed : int
+        An integer to seed the level with.
+
+    --discount : float
+        The discount factor for the neural network
+
+    --runs : int
+        The amount of training runs
+
+        Note
+        -------
+            - Only works when --train flag is provided
+
+    --train : boolean
+        Enable training if this flag is provided
+
+        Note
+        -------
+            - Requires the --output-model flag   
+&#34;&#34;&#34;
+
+from track import Track
+from helpers import str2bool
+from actor import Actor
+import numpy as np
+from nn import NN
+import argparse
+
+import torch.nn as nn
+import torch
+
+ENVIRONMENT = &#39;CarRacing-v0&#39;
+&#34; The OpenAI environment to generate &#34;
+
+# flags = argparse.ArgumentParser(description=&#39;All launch flags for making Car Racing possible&#39;)
+# flags.add_argument(&#39;--input-model&#39;, type=str, default=None, help=&#39;A path to a pretrained model&#39;)
+
+# # Training flags
+# flags.add_argument(&#39;--action-repeat&#39;, type=int, default=16, help=&#39;Allowed repeated actions in N frames&#39;)
+# flags.add_argument(&#39;--frames-per-state&#39;, type=int, default=4, help=&#39;Number of images per state&#39;)
+# flags.add_argument(&#39;--log-timing&#39;, type=int, default=10, help=&#39;Training log timing&#39;)
+# flags.add_argument(&#39;--output-model&#39;, type=str, default=f&#34;./{ENVIRONMENT}&#34;, help=&#39;A path to save a model to&#39;)
+# flags.add_argument(&#39;--nn-seed&#39;, type=int, default=0, help=&#39;Seed for level generation&#39;)
+# flags.add_argument(&#39;--level-seed&#39;, type=int, default=0, help=&#39;Seed for NN seeding&#39;)
+# flags.add_argument(&#39;--discount&#39;, type=float, default=0.99, help=&#39;Discount factor&#39;)
+# flags.add_argument(&#39;--runs&#39;, type=int, default=2500, help=&#39;The amount of training runs&#39;)
+# flags.add_argument(
+#     &#39;--train&#39;,
+#     type=str2bool,
+#     nargs=&#39;?&#39;,
+#     const=True,
+#     default=False,
+#     help=&#39;Enable training mode&#39;
+# )
+# args = flags.parse_args()
+
+# ARGUMENTS Below are for generating documentation
+# PDOC has an issue with flags being overwritten by this file.
+class Flags():
+    train = False
+    runs = 2500
+    level_seed = 1
+    nn_seed = 0
+    action_repeat = 16
+    frames_per_state = 4
+    log_timing = 10
+    output_model = f&#34;./{ENVIRONMENT}&#34;
+    input_model = None
+    discount = 0.99
+args = Flags()
+
+gpuDetected = torch.cuda.is_available()
+hardwareDevice = torch.device(&#34;cuda&#34; if gpuDetected else &#34;cpu&#34;)
+&#34; Offload computation partially to gpu if Nvidia CUDA GPU&#39;s are available &#34;
+
+&#34;&#34;&#34; Seeding for the neural network
+
+    Note:
+        Keep the torch manual seed above the if statement, manual seeding without GPU is always required for CPU computations.
+&#34;&#34;&#34;
+torch.manual_seed(args.nn_seed)
+if gpuDetected:
+    torch.cuda.manual_seed(args.nn_seed)
+
+if __name__ == &#34;__main__&#34;:
+    &#34; Create an actor with the passed arguments and hardware device &#34; 
+    actor = Actor(
+        outputModel = args.output_model,
+        inputModel = args.input_model,
+        discount = args.discount,
+        trainingMode = args.train,
+        framesPerState = args.frames_per_state,
+        hwDevice = hardwareDevice
+    )
+    actor.loadModel()
+    
+    track = Track(levelSeed = args.level_seed, env=ENVIRONMENT)
+    &#34; Generate a randomized track &#34; 
+
+    if args.train:
+        trainingRecords = []
+        runningScore = 0
+
+    state = track.reset()
+    runs = args.runs if args.train else 10
+    for run in range(runs):
+        &#34; for every lap or run (when training) run it. &#34;
+        score = 0
+        state = track.reset()
+
+        maxTrackScore = 1000
+        for _track in range(maxTrackScore):
+            &#34; For every track out of the maximum score &#34;
+            if args.train:
+                action, coefficient = actor.chooseActionTrain(state)
+            else:
+                action = actor.chooseAction(state)
+
+            newState, reward, done, die = track.step(action * np.array([2., 1., 1.]) + np.array([-1., 0., 0.]))
+
+            track.render()
+
+            if args.train and actor.storeInBuffer((state, action, coefficient, reward, newState)):
+                print(&#39;updating model file&#39;)
+                actor.update()
+
+            score += reward
+            state = newState
+
+            # completed the track or died.
+            if done or die:
+                break
+        
+
+        if args.train:
+            runningScore = runningScore * 0.99 + score * 0.01
+
+            if run % args.log_timing == 0:
+                print(f&#39;Average score over all runs: {runningScore:.2f}&#39;)
+                print(f&#39;Scored {score:.2f}/{maxTrackScore} for lap {run}&#39;)
+                actor.saveModel()
+        else:
+            print(f&#39;Scored {score:.2f}/{maxTrackScore} for lap {run}&#39;)
+        </code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-variables">Global variables</h2>
+<dl>
+<dt id="run.ENVIRONMENT"><code class="name">var <span class="ident">ENVIRONMENT</span></code></dt>
+<dd>
+<section class="desc"><p>The OpenAI environment to generate</p></section>
+</dd>
+<dt id="run.hardwareDevice"><code class="name">var <span class="ident">hardwareDevice</span></code></dt>
+<dd>
+<section class="desc"><p>Offload computation partially to gpu if Nvidia CUDA GPU's are available</p></section>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="run.Flags"><code class="flex name class">
+<span>class <span class="ident">Flags</span></span>
+<span>(</span><span>*args, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">class Flags():
+    train = False
+    runs = 2500
+    level_seed = 1
+    nn_seed = 0
+    action_repeat = 16
+    frames_per_state = 4
+    log_timing = 10
+    output_model = f&#34;./{ENVIRONMENT}&#34;
+    input_model = None
+    discount = 0.99</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="run.Flags.action_repeat"><code class="name">var <span class="ident">action_repeat</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="run.Flags.discount"><code class="name">var <span class="ident">discount</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="run.Flags.frames_per_state"><code class="name">var <span class="ident">frames_per_state</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="run.Flags.input_model"><code class="name">var <span class="ident">input_model</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="run.Flags.level_seed"><code class="name">var <span class="ident">level_seed</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="run.Flags.log_timing"><code class="name">var <span class="ident">log_timing</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="run.Flags.nn_seed"><code class="name">var <span class="ident">nn_seed</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="run.Flags.output_model"><code class="name">var <span class="ident">output_model</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="run.Flags.runs"><code class="name">var <span class="ident">runs</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="run.Flags.train"><code class="name">var <span class="ident">train</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul>
+<li><a href="#example">Example</a></li>
+<li><a href="#parameters">Parameters</a></li>
+</ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-variables">Global variables</a></h3>
+<ul class="">
+<li><code><a title="run.ENVIRONMENT" href="#run.ENVIRONMENT">ENVIRONMENT</a></code></li>
+<li><code><a title="run.hardwareDevice" href="#run.hardwareDevice">hardwareDevice</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="run.Flags" href="#run.Flags">Flags</a></code></h4>
+<ul class="two-column">
+<li><code><a title="run.Flags.action_repeat" href="#run.Flags.action_repeat">action_repeat</a></code></li>
+<li><code><a title="run.Flags.discount" href="#run.Flags.discount">discount</a></code></li>
+<li><code><a title="run.Flags.frames_per_state" href="#run.Flags.frames_per_state">frames_per_state</a></code></li>
+<li><code><a title="run.Flags.input_model" href="#run.Flags.input_model">input_model</a></code></li>
+<li><code><a title="run.Flags.level_seed" href="#run.Flags.level_seed">level_seed</a></code></li>
+<li><code><a title="run.Flags.log_timing" href="#run.Flags.log_timing">log_timing</a></code></li>
+<li><code><a title="run.Flags.nn_seed" href="#run.Flags.nn_seed">nn_seed</a></code></li>
+<li><code><a title="run.Flags.output_model" href="#run.Flags.output_model">output_model</a></code></li>
+<li><code><a title="run.Flags.runs" href="#run.Flags.runs">runs</a></code></li>
+<li><code><a title="run.Flags.train" href="#run.Flags.train">train</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.6.2</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

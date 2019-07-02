@@ -1,0 +1,4 @@
+{
+    "python.pythonPath": "X:\\programs\\conda\\envs\\drifter\\python.exe",
+    "python.formatting.provider": "black"
+}
